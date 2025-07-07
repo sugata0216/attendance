@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>出席管理システム</title>
+</head>
+<body>
+    {% block content %}
+        <nav class="menu">
+        <div class="hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+        </div>
+        <ul>
+        <li><a href="#">トップ</a></li>
+        <li><a href="#">お知らせ</a></li>
+        <li><a href="#">私たちについて</a></li>
+        <li><a href="#">制作事例</a></li>
+        <li><a href="#">お問い合わせ</a></li>
+        </ul>
+    </nav>
+    <div id='calendar'></div>
+{% endblock %}
+</body>
+</html>
