@@ -59,3 +59,67 @@ body {
   text-decoration: none;
   display: block;
 }
+header {
+  margin: 60px;
+}
+.fc-timegrid-slot-label {
+  /* visibility: hidden; */
+  height: 70px;  /* 任意で調整可 */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+}
+.timetable {
+  display: flex;
+}
+#period-labels {
+  width: 80px;
+  text-align: right;
+  padding-top: 50px;
+}
+#calendar {
+  flex-grow: 1;
+}
+#period-labels div {
+  height: 50px;
+  line-height: 50px;
+  font-weight: bold;
+  border-bottom: 1px solid #ccc;
+}
+.fc-timegrid-slot {
+  height: 100px !important;
+}
+.custom-label {
+ padding-left: 8px;
+ font-weight: bold;
+ font-size: 14px;
+ color: #333;
+}
+/* .fc-timegrid-slot-label {
+  vertical-align: middle;
+} */
+/* .fc-timegrid-slot-label-frame {
+  color: transparent;
+} */
+.fc-timegrid-slot-label-frame::before {
+  content: attr(data-label);
+  visibility: visible;
+  display: block;
+  text-align: center;
+  font-weight: bold;
+}
+/* タイムスロットのラベル幅を調整 */
+.fc .fc-timegrid-slot-label {
+  width: 80px; /* 必要に応じて調整 */
+  text-align: center;
+  font-weight: bold;
+}
+/* ラベルのテキストが見切れないように cushion も調整 */
+.fc .fc-timegrid-slot-label-frame {
+  overflow: visible;
+}
+/* ラベルの親枠を強制的に広げる */
+.fc-timegrid-axis {
+  min-width: 80px;
+}

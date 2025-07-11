@@ -4,15 +4,32 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.css" rel="stylesheet">
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
-    <link href='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.4/main.min.css' rel='stylesheet' />
     <title>Attendance Management{% block title %}{% endblock %}</title>
 </head>
 <body>
+    <header>
+        <nav class="menu">
+        <div class="hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+        </div>
+        <ul>
+        <li><a href="#">トップ</a></li>
+        <li><a href="#">お知らせ</a></li>
+        <li><a href="#">私たちについて</a></li>
+        <li><a href="#">制作事例</a></li>
+        <li><a href="#">お問い合わせ</a></li>
+        </ul>
+    </nav>
+    </header>
     {% block content %}
     {% endblock %}
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.4/main.min.js'></script>
-    <script type="text/javascript" src="{% static 'js/index.js' %}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/locales-all.global.min.js"></script>
+    <script src="{% static 'js/index.js' %}"></script>
 </body>
 </html>
