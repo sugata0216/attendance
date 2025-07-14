@@ -1,6 +1,6 @@
 from django.db import models
 class Student(models.Model):
-    student_number = models.CharField(max_length=8, unique=True)
+    student_number = models.CharField(max_length=7, unique=True)
     name = models.CharField(max_length=100)
     email = models.EmailField(blank=True, null=True)
     course = models.CharField(max_length=100, blank=True, null=True)
@@ -21,6 +21,7 @@ class Attendance(models.Model):
     student = models.ForeignKey(Student, on_delete=models.CASCADE)
     subject = models.ForeignKey(Subject, on_delete=models.CASCADE)
     date = models.DateField()
+    time_limit = models.IntegerField(null=True)
     status = models.CharField(max_length=12, choices=STATUS_CHOICES)
     timestamp = models.DateTimeField(auto_now_add=True)
 

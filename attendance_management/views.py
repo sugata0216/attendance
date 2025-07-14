@@ -19,6 +19,6 @@ def mark_attendance(request):
 
         return JsonResponse({'status': 'ok'})
     return JsonResponse({'error': 'Invalid method'}, status=400)
-
-
+def help(request):
+    return render(request, 'attendance_management/help.html')
 # Create your views here.

@@ -46,18 +46,22 @@ body {
   transform: rotate(-45deg) translate(6px, -6px);
 }
 .menu ul {
-  list-style-type: none;
+  list-style: none;
+  display: block;  /* ← 縦並びに戻す */
   padding: 0;
-  margin-top: 80px;
+  margin: 0;
 }
+/* 個々の項目 */
 .menu li {
-  padding: 20px 0;
-  border-bottom: 1px solid #444;
+  display: flex;              /* ログインなどは横並び */
+  align-items: center;
+  margin: 10px 0;             /* 項目間に縦の余白 */
 }
 .menu li a {
   color: #333;
   text-decoration: none;
   display: block;
+  padding-left: 8px;
 }
 header {
   margin: 60px;
@@ -122,4 +126,27 @@ header {
 /* ラベルの親枠を強制的に広げる */
 .fc-timegrid-axis {
   min-width: 80px;
+}
+.login {
+  display: flex;
+}
+.box {
+  width: 50px;
+  height: 50px;
+  margin: 0 auto;
+  margin-right: 0;
+}
+.box img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+/* ログインアイコン */
+.menu li.login img {
+  width: 24px;
+  height: 24px;
+  margin-right: 8px;
+}
+.menu li.login {
+  justify-content: flex-start;
 }
