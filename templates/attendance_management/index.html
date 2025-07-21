@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 {% block content %}
     <div id="calendar"
-    data-url="{% url 'mark_attendance' %}"
+    data-url="{% url 'attendance_management:mark_attendance' %}"
     data-csrf="{{ csrf_token }}"></div>
 {% endblock %}

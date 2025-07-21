@@ -93,6 +93,7 @@ header {
 }
 .fc-timegrid-slot {
   height: 100px !important;
+  /* height: 10px; */
 }
 .custom-label {
  padding-left: 8px;
