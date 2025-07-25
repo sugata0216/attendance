@@ -1,13 +1,21 @@
 {% extends "base.html" %}
+{% load django_bootstrap5 %}
+{% load static %}
 {% block title %}{{ object|yesno:'更新,作成' }}{% endblock %}
 {% block content %}
-<h2>{{ date }}({{ time_limit }}限目)の出席{%if is_update %}更新{% else %}入力{% endif %}</h2>
+<h1 class="mt-5">{{ date }}({{ time_limit }}限目)の出席{%if is_update %}更新{% else %}入力{% endif %}</h1>
 <form method="post">
     {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">{{ object|yesno:'更新,作成' }}</button>
+    {% comment %} {{ form.as_p }} {% endcomment %}
+    {% bootstrap_form form %}
+    {% with is_update|yesno:"更新,作成" as button_label %}
+        {% bootstrap_button button_type="submit" content=button_label size="md" %}
+    {% endwith %}
+    {% if is_update %}
+        <a href="{% url 'attendance_management:attendance_delete' attendance.id %}" class="btn btn-danger"><img src="{% static './image/trash_can-1 (1).jpg' %}" alt="trash_can"></a>
+    {% endif %}
 </form>
-<div>
-    <a href="{% url 'attendance_management:index' %}">一覧ページへ戻る</a>
+<div class="mt-3">
+    <a href="{% url 'attendance_management:index' %}" class="btn btn-secondary btn-md">一覧ページへ戻る</a>
 </div>
 {% endblock  %}

@@ -1,10 +1,28 @@
 {% extends "base.html" %}
+{% load static %}
 {% block title %}-ヘルプ{% endblock  %}
 {% block content %}
     <h1>chantkiteneの使い方</h1>
     <h2>日付を選択して出席管理をする</h2>
     <ol>
-        <li>どの日付の何限目かを指定する</li>
-        <p>カレンダーを見ながら管理をしたい時間を選択します。</p>
+        <li>どの日付の何限目かを指定する
+            <p>カレンダーを見ながら管理をしたい時間を選択します。</p>
+            <img src="{% static './image/explanation.png' %}" alt="explanation" class="explanation">
+        </li>
+        <li>フォームを入力し、保存する
+            <p>入力フォームは、その時間の科目と状態(出席、欠席、遅刻、早退)を記入します。</p>
+            <img src="{% static './image/explanation2.png' %}" alt="explanation2" class="explanation">
+        </li>
+    </ol>
+    <h2>入力内容の削除をする</h2>
+    <ol>
+        <li>削除をしたい時間をクリックし、ごみ箱ボタンを押す
+            <p>すでに入力されている時間は入力内容が画面に表示されます。</p>
+            <img src="{% static './image/explanation3.png' %}" alt="explanation3" class="explanation">
+        </li>
+        <li>削除確認画面に遷移し、削除ボタンを押す
+            <p>削除確認画面では、その時間の入力内容を消去します。</p>
+            <img src="{% static './image/explanation4.png' %}" alt="explanation4" class="explanation">
+        </li>
     </ol>
 {% endblock %}

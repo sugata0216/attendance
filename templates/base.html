@@ -19,7 +19,7 @@
         <span></span>
         </div>
         <ul>
-        <li><a href="#">chantkitene</a></li>
+        <li><a href="{% url 'attendance_management:index' %}">chantkitene</a></li>
         <li class="login">
             <img src="{% static 'image/upper_body-2.jpg' %}" alt="people">
             {% if user.is_authenticated %}

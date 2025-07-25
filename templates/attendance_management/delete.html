@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% load django_bootstrap5 %}
+{% block title %}-入力内容削除{% endblock %}
+{% block content %}
+<h1 class="mt-5">入力内容の削除</h1>
+<p>"{{ attendance.date }}{{ attendance.time_limit }}限目"の入力内容を削除しますか?</p>
+<form action="" method="post">
+    {% csrf_token %}
+    {% bootstrap_button button_type="submit" button_class="btn-danger" content="削除" size="md" %}
+</form>
+<div class="mt-3">
+    <a href="{% url 'attendance_management:index' %}">{% bootstrap_button button_type="submit" button_class="btn-secondary" content="一覧ページへ戻る" size="md" %}</a>
+</div>
+{% endblock %}

@@ -151,3 +151,7 @@ header {
 .menu li.login {
   justify-content: flex-start;
 }
+.explanation {
+  width: 80%;
+  height: 80%;
+}

@@ -59,6 +59,7 @@ def create_or_update_attendance(request, date, time_limit):
         form = AttendanceForm(instance=attendance)
     return render(request, 'attendance_management/create.html', {
         'form' : form,
+        'attendance' : attendance,
         'date' : date,
         'time_limit' : time_limit,
         'is_update' : is_update,
@@ -84,4 +85,10 @@ def get_events(request):
                 'end': attendance.date.strftime("%Y-%m-%dT%H:%M:%S"),
             })
         return JsonResponse(events, safe=False)
+def attendance_delete(request, pk):
+    attendance = get_object_or_404(Attendance, pk=pk)
+    if request.method == "POST":
+        attendance.delete()
+        return redirect('attendance_management:index')
+    return render(request, 'attendance_management/delete.html', {'attendance' : attendance})
 # Create your views here.
