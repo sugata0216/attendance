@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'attendance_management.apps.AttendanceManagementConfig',
     'django_bootstrap5',
+    # 'accounts.apps.AccountsConfig',
 ]
 
 MIDDLEWARE = [

@@ -128,3 +128,18 @@ document.addEventListener('DOMContentLoaded', function () {
 
   calendar.render();
 });
+const toggleBtn = document.getElementById("darkModeToggle");
+const body = document.body;
+toggleBtn.addEventListener("click", function() {
+  body.classList.toggle("dark-mode");
+  if (body.classList.contains("dark-mode")) {
+    localStorage.setItem("theme", "dark");
+  } else {
+    localStorage.setItem("theme", "light");
+  }
+});
+window.addEventListener("DOMContentLoaded", function() {
+  if (this.localStorage.getItem("theme") === "dark") {
+    body.classList.add("dark-mode");
+  }
+});

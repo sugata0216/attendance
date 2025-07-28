@@ -4,6 +4,15 @@ body {
   padding: 0;
   background-color: #fff;
 }
+body.dark-mode {
+  background-color: #121212;
+  color: #f0f0f0;
+}
+body.dark-mode button {
+  background-color: #333;
+  color: #fff;
+  border: 1px solid #555;
+}
 .menu {
   position: fixed;
   top: 0;
