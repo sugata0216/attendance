@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>{{ request.user.student.name }}さんの授業ごとの出席傾向</h2>
+{% for item in data %}
+    <h3>{{ item.subject_name }}</h3>
+    <canvas id="chart-{{ forloop.counter}}"
+            data-present="{{ item.present }}"
+            data-absent="{{ item.absent }}"
+            data-late="{{ item.late }}"
+            data-leave-early="{{ item.leave_early }}"
+            style="max-width: 400px; max-height: 300px;"></canvas>
+{% endfor %}
+<a href="{% url 'attendance_management:attendance_summary' %}" class="btn btn-secondary">戻る</a>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        {% for item in data %}
+            const canvas{{ forloop.counter }} = document.getElementById("chart-{{ forloop.counter }}");
+            if (!canvas{{ forloop.counter }}) return;
+            const ctx{{ forloop.counter }} = canvas{{ forloop.counter }}.getContext('2d');
+            new Chart(ctx{{ forloop.counter }}, {
+                type: 'pie',
+                data: {
+                    labels: ['出席', '欠席', '遅刻', '早退'],
+                    datasets: [{
+                        label: '{{ item.subject_name }} 出席傾向',
+                        data: [
+                            parseInt(canvas{{ forloop.counter }}.dataset.present) || 0,
+                            parseInt(canvas{{ forloop.counter }}.dataset.absent) || 0,
+                            parseInt(canvas{{ forloop.counter }}.dataset.late) || 0,
+                            parseInt(canvas{{ forloop.counter }}.dataset['leave-early']) || 0
+                        ],
+                        backgroundColor: [
+                            'rgba(75, 192, 192, 0.6)',
+                            'rgba(255, 99, 132, 0.6)',
+                            'rgba(255, 206, 86, 0.6)',
+                            'rgba(153, 102, 255, 0.6)',
+                        ],
+                        borderColor: ['#fff', '#fff', '#fff', '#fff'],
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            position: 'bottom',
+                        }
+                    }
+                }
+            });
+        {% endfor %}
+    });
+</script>
+{% endblock %}

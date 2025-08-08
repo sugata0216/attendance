@@ -113,9 +113,9 @@ document.addEventListener('DOMContentLoaded', function () {
             csrfmiddlewaretoken: csrfToken
           };
         },
-        failure: function() {
-          alert('イベントの読み込みに失敗しました。');
-        }
+        // failure: function() {
+        //   alert('イベントの読み込みに失敗しました。');
+        // }
       }
     ],
     eventDidMount: function(info) {
@@ -141,5 +141,39 @@ toggleBtn.addEventListener("click", function() {
 window.addEventListener("DOMContentLoaded", function() {
   if (this.localStorage.getItem("theme") === "dark") {
     body.classList.add("dark-mode");
+  }
+});
+const canvas = document.getElementById('attendanceChart');
+const ctx = canvas.getContext('2d');
+const attendanceChart = new Chart(ctx, {
+  type: 'pie',
+  data: {
+    labels: ['出席', '欠席', '遅刻', '早退'],
+    datasets: [{
+      label: '出席統計',
+      data: [
+        parseInt(canvas.dataset.present) || 0,
+        parseInt(canvas.dataset.absent) || 0,
+        parseInt(canvas.dataset.late) || 0,
+        parseInt(canvas.dataset.leave_early) || 0,
+      ],
+      backgroundColor: [
+        'rgba(75, 192, 192, 0.6)',
+        'rgba(255, 99, 132, 0.6)',
+        'rgba(255, 206, 86, 0.6)',
+        'rgba(153, 102, 255, 0.6)'
+      ],
+      borderColor: ['#fff', '#fff', '#fff', '#fff'],
+      borderWidth:1
+    }]
+  },
+  options: {
+    responsive: true,
+    maintainAspectRatio: false,
+    plugins: {
+      legend: {
+        position: 'bottom',
+      }
+    }
   }
 });

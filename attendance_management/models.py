@@ -31,10 +31,10 @@ class Attendance(models.Model):
     time_limit = models.IntegerField(choices=TIME_LIMIT_CHOICES)
     status = models.CharField(max_length=12, choices=STATUS_CHOICES)
     timestamp = models.DateTimeField(auto_now_add=True)
-
+    reason = models.TextField(blank=True, null=True)
     class Meta:
         unique_together = ('student', 'subject', 'date')  # 同一授業・同一日には一つだけ記録
 
     def __str__(self):
-        return f"{self.date} - {self.student.name} - {self.get_status_display()}"
+        return f"{self.student} - {self.subject} - {self.status}"
 # Create your models here.

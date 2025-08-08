@@ -164,3 +164,7 @@ header {
   width: 80%;
   height: 80%;
 }
+.graph {
+  width: 100% !important;
+  height: 100% !important;
+}

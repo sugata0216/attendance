@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}出席履歴{% endblock %}
+{% block content %}
+<h2 class="mt-4">出席履歴</h2>
+<a href="{% url 'attendance_management:export_attendance_csv' %}" class="btn btn-outline-primary">出席履歴をCSVでダウンロード</a>
+<a href="{% url 'attendance_management:attendance_pdf' %}" target="_blank" class="btn btn-outline-primary">出席履歴をPDFでダウンロード</a>
+<a href="{% url 'attendance_management:export_excel' %}" class="btn btn-outline-primary">Excelで出力</a>
+<table class="table table-bordered mt-3">
+    <thead class="table-light">
+        <tr>
+            <th>日付</th>
+            <th>授業</th>
+            <th>時限</th>
+            <th>出席状況</th>
+            <th>理由</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for record in attendance_records %}
+        <tr>
+            <td>{{ record.date }}</td>
+            <td>{{ record.subject.name }}</td>
+            <td>{{ record.get_time_limit_display }}</td>
+            <td>{{ record.get_status_display }}</td>
+            <td>{{ record.reason|default:"-" }}</td>
+        </tr>
+        {% empty %}
+        <tr>
+            <td colspan="5" class="text-center">出席履歴がありません</td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+<a href="{% url 'attendance_management:index' %}" class="btn btn-secondary">戻る</a>
+{% endblock %}

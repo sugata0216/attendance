@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block content %}
+    <h2>{{ student_name }}さんの出席統計</h2>
+    <div class="graph">
+        <canvas id="attendanceChart"
+                data-present="{{ present|default:0 }}"
+                data-absent="{{ absent|default:0 }}"
+                data-late="{{ late|default:0 }}"
+                data-early="{{ early|default:0 }}"
+                width="300" height="300">
+        </canvas>
+    </div>
+    <a href="{% url 'attendance_management:attendance_by_subject' %}" class="btn btn-outline-primary">授業ごとの出席傾向</a>
+{% endblock %}

@@ -1,5 +1,7 @@
 {% extends "base.html" %}
 {% block content %}
+    <a href="{% url 'attendance_management:attendance_history' %}" class="btn btn-outline-primary">出席履歴を見る</a>
+    <a href="{% url 'attendance_management:attendance_summary' %}" class="btn btn-outline-primary">出席統計のグラフ</a>
     <div id="calendar"
     data-url="{% url 'attendance_management:mark_attendance' %}"
     data-csrf="{{ csrf_token }}"></div>
