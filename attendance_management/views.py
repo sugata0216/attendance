@@ -50,6 +50,9 @@ def update_attendance(request, date, time_limit):
 @login_required
 def create_or_update_attendance(request, date, time_limit):
     time_limit = int(time_limit)
+    subject_id = request.GET.get('subject') or request.POST.get('subject')
+    if not subject_id:
+        return redirect('attendance_management:index')
     try:
         attendance = Attendance.objects.get(date=date, time_limit=time_limit, student=request.user.student)
         is_update = True
