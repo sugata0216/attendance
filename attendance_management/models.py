@@ -33,7 +33,7 @@ class Attendance(models.Model):
     timestamp = models.DateTimeField(auto_now_add=True)
     reason = models.TextField(blank=True, null=True)
     class Meta:
-        unique_together = ('student', 'subject', 'date')  # 同一授業・同一日には一つだけ記録
+        unique_together = ('student', 'subject', 'date', 'time_limit')  # 同一授業・同一日には一つだけ記録
 
     def __str__(self):
         return f"{self.student} - {self.subject} - {self.status}"
